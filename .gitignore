@@ -1,0 +1,12 @@
+VibeIsland.dmg
+.DS_Store
+.build/
+.swiftpm/
+DerivedData/
+xcuserdata/
+*.xcuserstate
+*.dSYM
+build/
+dist/
+.env
+.env.*
