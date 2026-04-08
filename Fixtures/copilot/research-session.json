@@ -1,0 +1,12 @@
+{
+  "sessionId": "copilot-research",
+  "title": "Draft release notes",
+  "terminalSessionId": "copilot-1",
+  "events": [
+    {
+      "timestamp": "2026-04-03T14:07:00Z",
+      "status": "complete",
+      "summary": "Drafted release notes and queued them for review."
+    }
+  ]
+}

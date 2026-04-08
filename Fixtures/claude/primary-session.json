@@ -1,0 +1,29 @@
+{
+  "sessionId": "claude-primary",
+  "title": "Repair hook installation",
+  "terminalSessionId": "terminal-claude-3",
+  "events": [
+    {
+      "timestamp": "2026-04-03T14:00:00Z",
+      "type": "thinking",
+      "text": "Scanning ~/.claude/settings.json for managed hook blocks.",
+      "tasks": [
+        { "id": "inspect", "title": "Inspect existing settings.json", "isComplete": true },
+        { "id": "repair", "title": "Restore hook block", "isComplete": false }
+      ]
+    },
+    {
+      "timestamp": "2026-04-03T14:01:30Z",
+      "type": "question",
+      "text": "Claude is waiting for a decision.",
+      "question": {
+        "prompt": "Restore CLI hooks for Claude Code?",
+        "allowsMultipleSelection": false,
+        "options": [
+          { "id": "restore", "title": "Restore now", "detail": "Reinstall the managed hook block" },
+          { "id": "skip", "title": "Skip", "detail": "Leave the modified file untouched" }
+        ]
+      }
+    }
+  ]
+}

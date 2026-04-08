@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>ProductName</key>
+  <string>Agent Island</string>
+  <key>BundleID</key>
+  <string>app.agentisland.macos</string>
+  <key>Version</key>
+  <string>1.0.18</string>
+  <key>RepositoryURL</key>
+  <string>https://github.com/bozliu/agent-island</string>
+  <key>DownloadURL</key>
+  <string>https://github.com/bozliu/agent-island/releases</string>
+  <key>RepositoryOwner</key>
+  <string>bozliu</string>
+  <key>RepositoryName</key>
+  <string>agent-island</string>
+  <key>UsageEnabled</key>
+  <true/>
+  <key>DMGName</key>
+  <string>AgentIsland.dmg</string>
+  <key>VolumeName</key>
+  <string>Agent Island</string>
+  <key>SUFeedURL</key>
+  <string></string>
+  <key>SUPublicEDKey</key>
+  <string></string>
+  <key>SUAutomaticallyUpdate</key>
+  <true/>
+  <key>SUEnableAutomaticChecks</key>
+  <true/>
+  <key>SUScheduledCheckInterval</key>
+  <integer>21600</integer>
+</dict>
+</plist>

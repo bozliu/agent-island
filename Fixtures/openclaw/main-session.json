@@ -1,0 +1,15 @@
+[
+  {
+    "eventId": "openclaw-1",
+    "source": "codex",
+    "sessionId": "openclaw-main",
+    "title": "OpenClaw: 灵动岛进化中",
+    "status": "thinking",
+    "lastAssistantMessage": "正在分析 Agent Island 的代码结构，准备实现 OpenClaw 适配器...",
+    "tasks": [
+      { "id": "analyze", "title": "分析 SourceAdapters 结构", "isComplete": true },
+      { "id": "design", "title": "设计 OpenClaw 事件映射协议", "isComplete": false }
+    ],
+    "timestamp": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")"
+  }
+]

@@ -1,0 +1,16 @@
+{
+  "sessionId": "gemini-localization",
+  "title": "Translate onboarding copy",
+  "terminalSessionId": "warp-gemini-7",
+  "events": [
+    {
+      "timestamp": "2026-04-03T14:05:00Z",
+      "status": "runningTool",
+      "summary": "Syncing Japanese and Korean onboarding strings.",
+      "tasks": [
+        { "id": "extract", "title": "Extract English copy", "isComplete": true },
+        { "id": "translate", "title": "Translate ja/ko", "isComplete": false }
+      ]
+    }
+  ]
+}

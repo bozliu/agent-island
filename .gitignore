@@ -1,4 +1,4 @@
-VibeIsland.dmg
+AgentIsland.dmg
 .DS_Store
 .build/
 .swiftpm/
@@ -8,5 +8,9 @@ xcuserdata/
 *.dSYM
 build/
 dist/
+.omx/
 .env
 .env.*
+PrivateAssets/
+Config/ServiceConfig.local.plist
+Config/Private.xcconfig

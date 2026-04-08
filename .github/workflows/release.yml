@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  package:
+    runs-on: macos-15
+    permissions:
+      contents: write
+    env:
+      AGENT_ISLAND_PRODUCT_NAME: Agent Island
+      AGENT_ISLAND_DMG_NAME: AgentIsland.dmg
+      AGENT_ISLAND_VOLUME_NAME: Agent Island
+      AGENT_ISLAND_REPOSITORY_OWNER: bozliu
+      AGENT_ISLAND_REPOSITORY_NAME: agent-island
+      AGENT_ISLAND_REPOSITORY_URL: https://github.com/bozliu/agent-island
+      AGENT_ISLAND_DOWNLOAD_URL: https://github.com/bozliu/agent-island/releases
+      AGENT_ISLAND_SIGN_IDENTITY: ${{ secrets.AGENT_ISLAND_SIGN_IDENTITY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+
+      - name: Import signing certificate
+        if: ${{ secrets.AGENT_ISLAND_SIGNING_CERT_B64 != '' }}
+        env:
+          CERT_B64: ${{ secrets.AGENT_ISLAND_SIGNING_CERT_B64 }}
+          CERT_PASSWORD: ${{ secrets.AGENT_ISLAND_SIGNING_CERT_PASSWORD }}
+          KEYCHAIN_PASSWORD: ${{ secrets.AGENT_ISLAND_KEYCHAIN_PASSWORD }}
+        run: |
+          CERT_PATH="$RUNNER_TEMP/agent-island-signing.p12"
+          KEYCHAIN_PATH="$RUNNER_TEMP/agent-island-signing.keychain-db"
+          echo "$CERT_B64" | base64 --decode > "$CERT_PATH"
+          security create-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security set-keychain-settings -lut 21600 "$KEYCHAIN_PATH"
+          security unlock-keychain -p "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+          security import "$CERT_PATH" -k "$KEYCHAIN_PATH" -P "$CERT_PASSWORD" -T /usr/bin/codesign -T /usr/bin/security
+          security list-keychains -d user -s "$KEYCHAIN_PATH"
+          security set-key-partition-list -S apple-tool:,apple: -s -k "$KEYCHAIN_PASSWORD" "$KEYCHAIN_PATH"
+
+      - name: Build app bundle
+        run: scripts/build-app.sh
+
+      - name: Package dmg
+        run: scripts/package-dmg.sh
+
+      - name: Notarize dmg
+        if: ${{ secrets.AGENT_ISLAND_NOTARY_APPLE_ID != '' && secrets.AGENT_ISLAND_NOTARY_PASSWORD != '' && secrets.AGENT_ISLAND_NOTARY_TEAM_ID != '' }}
+        env:
+          APPLE_ID: ${{ secrets.AGENT_ISLAND_NOTARY_APPLE_ID }}
+          APPLE_PASSWORD: ${{ secrets.AGENT_ISLAND_NOTARY_PASSWORD }}
+          TEAM_ID: ${{ secrets.AGENT_ISLAND_NOTARY_TEAM_ID }}
+        run: |
+          xcrun notarytool submit "dist/AgentIsland.dmg" \
+            --apple-id "$APPLE_ID" \
+            --password "$APPLE_PASSWORD" \
+            --team-id "$TEAM_ID" \
+            --wait
+          xcrun stapler staple "dist/AgentIsland.dmg"
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: agent-island-packaging
+          path: dist/*
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*
+          draft: true
+          generate_release_notes: true

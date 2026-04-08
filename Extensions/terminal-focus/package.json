@@ -1,0 +1,16 @@
+{
+  "name": "agent-island-terminal-focus",
+  "displayName": "Agent Island Terminal Focus",
+  "description": "Scaffold for VS Code and Cursor terminal focusing used by the Agent Island OSS rebuild.",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js"
+}

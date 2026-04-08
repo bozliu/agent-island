@@ -1,0 +1,9 @@
+file 'frames/01-monitor.png'
+duration 1.6
+file 'frames/02-approve.png'
+duration 1.6
+file 'frames/03-ask.png'
+duration 1.6
+file 'frames/04-jump.png'
+duration 1.6
+file 'frames/04-jump.png'

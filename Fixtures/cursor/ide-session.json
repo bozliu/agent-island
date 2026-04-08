@@ -1,0 +1,12 @@
+{
+  "sessionId": "cursor-ide",
+  "title": "Install terminal-focus extension",
+  "terminalSessionId": "cursor-ide-1",
+  "events": [
+    {
+      "timestamp": "2026-04-03T14:06:00Z",
+      "status": "waitingForApproval",
+      "summary": "Ready to install the IDE bridge package."
+    }
+  ]
+}
