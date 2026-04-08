@@ -90,20 +90,6 @@ Agent Island is developed with inspiration from [claude-island](https://github.c
 
 The repo keeps the product public-facing, but avoids shipping private credentials, private feeds, or non-redistributable assets.
 
-## Release process
-
-If you want the codebase ready for public submission and release on GitHub, use this lane:
-
-1. Clean `git status` and remove non-public files.
-2. Run local validation.
-3. Open a PR to `main`.
-4. Let CI pass.
-5. Tag the release.
-6. Let GitHub Actions publish a draft release with packaged artifacts.
-7. If signing/notarization secrets are configured, ship the signed macOS release from GitHub Releases.
-
-Detailed repo and release guidance lives in [docs/release.md](docs/release.md).
-
 ## Developer docs
 
 - [CONTRIBUTING.md](CONTRIBUTING.md)
