@@ -4,7 +4,7 @@
 
 It keeps agent attention on one ambient layer above your work so you can monitor progress, approve permissions, answer questions, review plans, and jump back to the right context without tab hunting.
 
-![Agent Island hero](assets/hero/agent-island-hero.gif)
+![Agent Island hero](assets/hero/agent-island-hero-v2.gif)
 
 ## Why this exists
 
