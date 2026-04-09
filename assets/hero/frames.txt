@@ -1,11 +1,11 @@
 file 'frames/01-monitor.png'
-duration 1.4
+duration 1.5
 file 'frames/02-approve.png'
-duration 1.4
+duration 1.5
 file 'frames/03-ask.png'
-duration 1.4
+duration 1.5
 file 'frames/04-complete.png'
-duration 1.4
+duration 1.5
 file 'frames/05-all-set.png'
-duration 1.8
+duration 2.0
 file 'frames/05-all-set.png'
